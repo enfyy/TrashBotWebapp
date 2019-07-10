@@ -1,0 +1,26 @@
+::::::::::::::::::::::::::GAMES INTERACES:::::::::::::::::::::::::::::::..:::
+
+--------------------DB Notes----------------------------------------------
+Model: Müll
+Aufsammeldatum, Müllkategorie-ID, Beschreibung
+
+Model: Müllkategorie
+Name
+--------------------------------------------------------------------------
+::::::::::::::::::::::::::REST API::::::::::::::::::::::::::::::::::::::::::
+- token param for all write requests
+
+GET /trash -> List of all the trash
+params: date
+
+GET /categories -> List of all categories
+params: -
+
+POST /trash -> New trash entry
+params: date, category, description
+
+POST /categories -> new category
+params: name
+
+?? DELETE /trash ??
+

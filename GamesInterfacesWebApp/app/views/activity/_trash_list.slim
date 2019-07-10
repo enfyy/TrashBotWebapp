@@ -1,0 +1,82 @@
+div.row
+  div.col-12
+    h3.text-center
+      u
+        'Recent Activity (#{@all_trash.count})
+div.row.list-div
+  div.col-3
+  div.col-6
+    div.input-group.mb-3
+      div.input-group-prepend
+        label.input-group-text for="inputGroupSelect"
+          i.fas.fa-filter
+          '&ensp;Category
+      select.custom-select id="inputGroupSelect"
+        option selected="true"
+          = @cat.nil? ? "" : @category_hash[@cat.to_i]
+        option value=""
+          '- No Filter -
+        -@category_hash.each do |key,val|
+          -unless @cat.to_i == key
+            option value="#{key}"
+              =val
+  div.col-3
+div.row
+  div.col-3
+  div.col-6
+    table.table.table-dark.table-hover
+      thead
+        tr
+          th scope="col"
+            i.fas.fa-hashtag
+            '&ensp;ID
+          th scope="col"
+            i.fas.fa-recycle
+            '&ensp;Recycling Category
+          th scope="col"
+            i.fas.fa-info
+            '&ensp;Description
+          th scope="col"
+            i.far.fa-calendar-alt
+            '&ensp;Collection Date
+          th scope="col"
+            i.fas.fa-arrows-alt-h
+            '&ensp;Longitude
+          th scope="col"
+            i.fas.fa-arrows-alt-v
+            '&ensp;Latitude
+      tbody
+        -@trash_list.each do |trash|
+          tr
+            td
+              =trash.id
+            td
+              =@category_hash[trash.categories_id]
+            td
+              =trash.description
+            td
+              =trash.collected_at
+            td
+              =trash.longitude
+            td
+              =trash.latitude
+  div.col-3
+
+script src="http://code.jquery.com/jquery-1.11.0.min.js"
+
+javascript:
+  $(function(){
+      $('#inputGroupSelect').on('change', function () {
+          var cat_id = $(this).val();
+          if (cat_id) {
+              var url = location.protocol + '//' + location.host + location.pathname + '?category_id=' + cat_id;
+              window.location.href = url;
+          } else {
+              var url = location.protocol + '//' + location.host + location.pathname;
+              window.location.href = url;
+          }
+
+          return false;
+      });
+  });
+

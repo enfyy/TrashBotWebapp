@@ -1,0 +1,48 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body {
+  font-family: 'Lato', sans-serif !important;
+  color: whitesmoke;
+}
+
+.nav-link-text {
+  color: mediumspringgreen !important;
+  font-family: 'Lato', sans-serif;
+}
+
+.nav-text {
+  color: wheat !important;
+  font-family: 'Lato', sans-serif;
+}
+
+.nav-top-space {
+  margin-top: -10px;
+}
+
+.list-div {
+  margin-top: 20px;
+}
+
+.nav-brand-p {
+  padding-top: 10px;
+}
+
+.info-div{
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.most-recent-find {
+  font-size: 17pt;
+}
+
+.info-icon {
+  color: mediumspringgreen !important;
+}
+
+.info-icon-alt {
+  color: mediumslateblue !important;
+}

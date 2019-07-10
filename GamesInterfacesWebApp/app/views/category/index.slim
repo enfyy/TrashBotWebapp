@@ -1,0 +1,27 @@
+= render 'shared/navbar'
+div.container-fluid
+  div.row
+    div.col-12
+      h3.text-center
+        u
+          'Categories
+  div.row
+    div.col-3
+    div.col-6
+      table.table.table-dark.table-hover
+        thead
+          tr
+            th scope="col"
+              i.fas.fa-hashtag
+              '&ensp;ID
+            th scope="col"
+              i.fas.fa-recycle
+              '&ensp;Name
+        tbody
+          -@categories.each do |cat|
+            tr
+              td
+                =cat.id
+              td
+                =cat.name
+    div.col-3

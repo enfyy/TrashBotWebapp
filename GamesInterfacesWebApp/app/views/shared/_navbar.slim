@@ -1,0 +1,18 @@
+nav.navbar.navbar-light.bg-dark.navbar-expand-lg.nav-top-space
+  a.navbar-brand href="#"
+    p.nav-text.nav-brand-p
+      i.fas.fa-trash
+      '&ensp;
+      'Trash-Bot v1.3
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+    span.navbar-toggler-icon
+  div.collapse.navbar-collapse id="navbarNav"
+    ul.navbar-nav
+      li.nav-item
+        =link_to "Trash", {controller: 'trash', action: 'index'}, class:'nav-link nav-link-text'
+      li.nav-item
+        =link_to "Categories", {controller: 'category', action: 'index'}, class:'nav-link nav-link-text'
+      li.nav-item
+        =link_to "Map", {controller: 'map', action: 'index'}, class:'nav-link nav-link-text'
+      li.nav-item
+        = link_to "Activity", {controller: 'activity', action: 'index'}, class: 'nav-link nav-link-text'

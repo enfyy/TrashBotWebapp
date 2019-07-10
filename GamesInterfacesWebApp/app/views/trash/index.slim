@@ -1,0 +1,63 @@
+=render 'shared/navbar'
+div.container-fluid
+  div.row
+    div.col-12
+      h3.text-center
+        u
+          'Most Recent Find
+  div.row.info-div
+    div.col-3
+    div.col-3.most-recent-find
+      table
+        thead
+        tbody
+          tr
+            th.text-center.info-icon
+              i.fas.fa-hashtag
+            th
+              '&ensp;
+            th
+              = @most_recent_find.nil? ? " -" : @most_recent_find.id
+          tr
+            th.text-center.info-icon
+              i.fas.fa-recycle
+            th
+              '&ensp;
+            th
+              = @most_recent_find.nil? ? " -" : @category_hash[@most_recent_find.categories_id]
+          tr
+            th.text-center.info-icon
+              i.fas.fa-info
+            th
+              '&ensp;
+            th
+              = @most_recent_find.nil? ? " -" : @most_recent_find.description
+          tr
+            th.text-center.info-icon
+              i.far.fa-calendar-alt
+            th
+              '&ensp;
+            th
+              = @most_recent_find.nil? ? " -" : @most_recent_find.collected_at
+          tr
+            th.text-center.info-icon
+              i.fas.fa-arrows-alt-h
+            th
+              '&ensp;
+            th
+              = @most_recent_find.nil? ? " -" : @most_recent_find.longitude
+          tr
+            th.text-center.info-icon
+              i.fas.fa-arrows-alt-v
+            th
+              '&ensp;
+            th
+              = @most_recent_find.nil? ? " -" : @most_recent_find.latitude
+    div.col-3.text-center
+      - if @image.nil?
+        'No image available
+      - else
+        = image_tag(@image)
+    div.col-3
+  div id='trashList'
+    =render 'trash_list'

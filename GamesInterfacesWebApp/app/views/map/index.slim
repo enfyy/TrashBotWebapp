@@ -1,0 +1,61 @@
+=render 'shared/navbar'
+div.container-fluid
+  div.row
+    div.col-4
+    div.col-4
+      -if @data_array.empty?
+        p
+          'There is no Data for a Map. Please add Coordinates to the Trash entries.
+      canvas id="myChart" width="700" height="700"
+    div.col-4
+
+script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
+
+javascript:
+  if (#{@data_array.any?}) {
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var trashData = '<%=@data%>';
+      var scatterChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {
+              datasets: [{
+                  label: 'Trash Locations',
+                  borderColor: '#71e0b7aa',
+                  backgroundColor: '#71e0b7aa',
+                  data: #{@data_array.to_json.html_safe}
+              }]
+          },
+          options: {
+              title: {
+                  display: 'true',
+                  text: 'Scatter Map of Geo Coordinates'
+              },
+              scales: {
+                  xAxes: [{
+                      ticks: {
+                          min: #{@min_long},
+                          max: #{@max_long}
+                      },
+                      type: 'linear',
+                      position: 'bottom',
+                      scaleLabel: {
+                          labelString: 'Longitude',
+                          display: 'true'
+                      }
+                  }],
+                  yAxes: [{
+                      ticks: {
+                          min: #{@min_lat},
+                          max: #{@max_lat}
+                      },
+                      type: 'linear',
+                      position: 'bottom',
+                      scaleLabel: {
+                          labelString: 'Latitude',
+                          display: 'true'
+                      }
+                  }]
+              }
+          }
+      });
+  }
